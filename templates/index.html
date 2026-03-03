@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI-Based Student Performance Prediction System</title>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg,#1f4037,#99f2c8);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card{
+    background:white;
+    padding:35px;
+    width:380px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+input{
+    width:90%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:15px;
+}
+
+button{
+    background:#1f8f6f;
+    color:white;
+    border:none;
+    padding:13px;
+    width:100%;
+    border-radius:10px;
+    font-size:16px;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#146b53;
+}
+
+.reset-btn{
+    margin-top:8px;
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    background:#bfbfbf;
+    color:#333;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.result{
+    margin-top:18px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.bar{
+    margin-top:12px;
+    width:100%;
+    background:#eee;
+    border-radius:20px;
+}
+
+.fill{
+    height:18px;
+    border-radius:20px;
+    background:linear-gradient(90deg,#00c6ff,#0072ff);
+}
+
+.footer{
+    margin-top:15px;
+    font-size:12px;
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🤖 AI-Based Student Performance Prediction System</h1>
+
+<form action="/predict" method="post">
+<input type="number" step="any" name="hours" placeholder="📚 Study Hours (0-12)" min="0" max="12" required>
+<input type="number" step="any" name="attendance" placeholder="🧾 Attendance % (0-100)" min="0" max="100" required>
+<input type="number" step="any" name="sleep" placeholder="😴 Sleep Hours (0-12)" min="0" max="12" required>
+
+<button type="submit">Predict Performance</button>
+</form>
+
+{% if prediction_text %}
+<div class="result">{{ prediction_text }}</div>
+
+<h2>Grade: {{ grade }}</h2>
+
+<div class="bar">
+    <div class="fill" style="width: {{ percent }}%;"></div>
+</div>
+
+<div class="footer">{{ message }}</div>
+{% endif %}
+
+<p class="footer">
+Built by Aadya Saxena | ML + Flask Project
+</p>
+
+</div>
+</body>
+</html>

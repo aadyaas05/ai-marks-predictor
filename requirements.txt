@@ -1,3 +1,4 @@
 flask-login
 flask-sqlalchemy
 email-validator
+gunicorn
